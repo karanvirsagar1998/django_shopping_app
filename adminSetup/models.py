@@ -6,8 +6,6 @@ class Category(models.Model):
     name = models.CharField(max_length=100, null=True)
     description = models.TextField(max_length=1000, null=True)
 
-    class Meta:
-        db_table = "categories"
 
 
 class SubCategory(models.Model):
@@ -16,8 +14,6 @@ class SubCategory(models.Model):
     category_id = models.IntegerField(null=True)
     description = models.TextField(max_length=1000, null=True)
 
-    class Meta:
-        db_table = "subcategories"
 
 
 class Product(models.Model):
@@ -34,5 +30,3 @@ class Product(models.Model):
     date_created = models.DateField(null=True, auto_now_add=True)
     sales = models.IntegerField(null=True)
 
-    class Meta:
-        db_table = "products"

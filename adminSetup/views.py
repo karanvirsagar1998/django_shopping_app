@@ -2,9 +2,9 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib import messages
 from django.http import JsonResponse
 from json import dumps
-from adminSetup.models import *
-from adminSetup import models
+# from adminSetup import models
 
+from adminSetup.models import Category
 from django.core import serializers
 from django.db import connection
 import calendar
