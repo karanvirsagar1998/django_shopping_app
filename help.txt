@@ -1,0 +1,2 @@
+create a virtual enviroment first, move the project to virtual environment dir and install these dependies by
+pip insall -r requiremenets.txt
