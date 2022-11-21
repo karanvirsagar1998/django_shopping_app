@@ -2,10 +2,10 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo" href="/adminSetup/">
-            <img src="{% static 'images/logo.svg' %}" alt="logo" />
+            <img src="{% static 'images/logo.svg' %}" alt="logo"/>
         </a>
         <a class="navbar-brand brand-logo-mini" href="/adminSetup/">
-            <img src="{% static 'images/logo-mini.svg' %}" alt="logo" />
+            <img src="{% static 'images/logo-mini.svg' %}" alt="logo"/>
         </a>
         <button class="navbar-toggler navbar-toggler align-self-center d-none d-lg-flex"
                 type="button"
@@ -215,28 +215,38 @@
                 <span class="menu-title">View All Categories</span>
             </a>
         </li>
-        {% comment %} <li class="nav-item">
+        {% comment %}
+        <li class="nav-item">
             <a class="nav-link" href="/adminSetup/add-new-cat">
                 <i class="typcn typcn-film menu-icon"></i>
                 <span class="menu-title">Add New Category</span>
             </a>
-        </li> {% endcomment %}
+        </li>
+        {% endcomment %}
         <li class="nav-item">
             <a class="nav-link" href="/adminSetup/view-all-sub-cats">
                 <i class="typcn typcn-chart-pie-outline menu-icon"></i>
                 <span class="menu-title">View All Sub-Categories</span>
             </a>
         </li>
-        {% comment %} <li class="nav-item">
+        {% comment %}
+        <li class="nav-item">
             <a class="nav-link" href="/adminSetup//add-new-sub-cat">
                 <i class="typcn typcn-th-small-outline menu-icon"></i>
                 <span class="menu-title">Add New Sub-Category</span>
             </a>
-        </li> {% endcomment %}
+        </li>
+        {% endcomment %}
         <li class="nav-item">
             <a class="nav-link" href="/adminSetup/view-all-products">
                 <i class="typcn typcn-chart-pie-outline menu-icon"></i>
                 <span class="menu-title">View All Products</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/adminSetup/sales">
+                <i class="typcn typcn-chart-pie-outline menu-icon"></i>
+                <span class="menu-title">Sales</span>
             </a>
         </li>
     </ul>

@@ -145,6 +145,10 @@
     function openEditSubCategoryModal(id) {
         $('#deleteSubCategoryBtn').hide();
         $('#updateSubCategoryBtn').show();
+        $("#subCatName").attr('disabled', false);
+        $("#subCatDesc").attr('disabled', false);
+        $("#selectOptionForParentCategory").attr('disabled', false);
+
         subCatID = id;
         $.ajax({
             url: 'edit-sub-category/' + id,
@@ -197,6 +201,9 @@
     function openDeleteSubCategoryModal(id) {
         $('#updateSubCategoryBtn').hide();
         $('#deleteSubCategoryBtn').show();
+        $("#subCatName").attr('disabled', true);
+        $("#subCatDesc").attr('disabled', true);
+        $("#selectOptionForParentCategory").attr('disabled', true);
         catID = id;
         param = 'abc';
         url = 'delete-sub-category/' + id + "/" + param;
@@ -211,7 +218,7 @@
                     $("#editSubCatModal").modal('show');
                     $("#subCatName").val(data.name);
                     $("#subCatDesc").val(data.description);
-                    let html = '<option value=' + data.parent_id + ' selected>' + data.parent_name + " (This is your current Parent ID)" + '</option>'
+                    let html = '<option value=' + data.parent_id + ' selected>' + data.parent_name + '</option>'
                     $("#selectOptionForParentCategory").html(html);
                 }
             }

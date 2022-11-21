@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from json import dumps
 # from adminSetup import models
 
-from adminSetup.models import Category
+from adminSetup.models import *
 from django.core import serializers
 from django.db import connection
 import calendar
@@ -93,7 +93,8 @@ def delete_category(request, id, param):
         is_child_exist = SubCategory.objects.raw(
             'select * from subcategories where category_id=%s' % id)
         if len(is_child_exist) > 0:
-            data['message'] = 'Category cannot be deleted because it has children, please contact your Super-Admin for more information.'
+            data[
+                'message'] = 'Category cannot be deleted because it has children, please contact your Super-Admin for more information.'
         else:
             # delete processing
             bool = cursor.execute(
@@ -131,7 +132,7 @@ def add_new_sub_cat(request):
         except Exception as e:
             success = 0
             return HttpResponse(success, exc_info=True)
-    return render(request, 'add-new-sub-cat.html',  context)
+    return render(request, 'add-new-sub-cat.html', context)
 
 
 def edit_sub_category(request, id):
@@ -144,7 +145,8 @@ def edit_sub_category(request, id):
         subCat.description = request.POST['subCatDesc']
         subCat.save()
         updatedSubCat = SubCategory.objects.raw(
-            'select subcategories.*, categories.name AS parent, categories.id As parentid from subcategories join categories on categories.id = subcategories.category_id where subcategories.id=%s' % id)[0]
+            'select subcategories.*, categories.name AS parent, categories.id As parentid from subcategories join categories on categories.id = subcategories.category_id where subcategories.id=%s' % id)[
+            0]
         if updatedSubCat:
             data['success'] = 1
             data['id'] = updatedSubCat.id
@@ -157,7 +159,8 @@ def edit_sub_category(request, id):
         return JsonResponse(data)
     else:
         subcategory = SubCategory.objects.raw(
-            'select subcategories.*, categories.name AS parent, categories.id as parentid from subcategories join categories on categories.id = subcategories.category_id where subcategories.id=%s' % id)[0]
+            'select subcategories.*, categories.name AS parent, categories.id as parentid from subcategories join categories on categories.id = subcategories.category_id where subcategories.id=%s' % id)[
+            0]
         categories = Category.objects.raw('select name, id from categories')
         if subcategory:
             data['success'] = 1
@@ -202,7 +205,8 @@ def delete_sub_category(request, id, param):
         is_product_exist = Product.objects.raw(
             'select * from products where sub_category_id=%s' % id)
         if len(is_product_exist) > 0:
-            data['message'] = 'Sub Category cannot be deleted because it has been alloted to products, please contact your Super-Admin for more information.'
+            data[
+                'message'] = 'Sub Category cannot be deleted because it has been alloted to products, please contact your Super-Admin for more information.'
         else:
             # delete processing
             bool = cursor.execute(
@@ -218,7 +222,7 @@ def view_all_products(request):
     products = Product.objects.raw(
         "select products.*, subcategories.name as parentname from products join subcategories on products.sub_category_id=subcategories.id order by products.id DESC")
     context = {'products': products}
-    return render(request, 'view-all-products.html',  context)
+    return render(request, 'view-all-products.html', context)
 
 
 def add_new_product(request):
