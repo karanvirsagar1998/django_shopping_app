@@ -23,5 +23,6 @@ urlpatterns = [
     path('edit-product/<str:id>', include('adminSetup.urls')),
     path('delete-product/<str:id>', include('adminSetup.urls')),
     path('get-products-count-by-week/<int:month>', include('adminSetup.urls')),
+    path('get-product-sales-info', include('adminSetup.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

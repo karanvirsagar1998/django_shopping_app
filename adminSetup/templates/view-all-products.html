@@ -75,6 +75,7 @@
                                                 <th>Color</th>
                                                 <th>Description</th>
                                                 <th>Image</th>
+                                                <th>Sold</th>
                                                 <th style="width: 150px !important;">Action</th>
                                             </tr>
                                         </thead>
@@ -96,6 +97,7 @@
                                                 <td>
                                                     <img id="productImg" src="media/{{ product.image }}">
                                                 </td>
+                                                <td id="productColor">{{ product.sales }}</td>
                                                 <td>
                                                     <a href="edit-product/{{ product.id }}"
                                                         style="text-decoration: none !important;">

@@ -232,7 +232,7 @@ def add_new_product(request):
         product = Product()
         product.name = request.POST.get('name')
         product.quantity = int(request.POST.get('quantity'))
-        product.sub_category_id = request.POST.get('sub_category_id')
+        product.sub_category_id = request.POST.get('sub_category')
         product.initial_price = request.POST.get('initial_price')
         product.discount = request.POST.get('discount')
         product.final_price = request.POST.get('final_price')
@@ -254,7 +254,7 @@ def edit_product(request, id):
     if request.method == 'POST':
         product.name = request.POST.get('name')
         product.quantity = int(request.POST.get('quantity'))
-        product.sub_category_id = request.POST.get('sub_category_id')
+        product.sub_category_id = request.POST.get('sub_category')
         product.initial_price = request.POST.get('initial_price')
         product.discount = request.POST.get('discount')
         product.final_price = request.POST.get('final_price')
@@ -313,3 +313,9 @@ def get_products_count_by_week(request, month):
     data['totalProducts'] = totalProducts
     data['countProductsInEachWeek'] = countProductsInEachWeek
     return JsonResponse(data)
+
+
+def get_product_sales_info(request):
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'get_product_sales_info.html', context)

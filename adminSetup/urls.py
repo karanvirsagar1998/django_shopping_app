@@ -20,5 +20,6 @@ urlpatterns = [
     path('edit-product/<str:id>', views.edit_product),
     path('delete-product/<str:id>', views.delete_product),
     path('get-products-count-by-week/<int:month>', views.get_products_count_by_week),
+    path('get-product-sales-info', views.get_product_sales_info),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
