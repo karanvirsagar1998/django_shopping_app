@@ -137,33 +137,32 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Image</label>
-                                            <div class="col-sm-9">
-                                                <input  type="file" id="productImg" name="product_img"
-                                                    onchange="showUpdatePreview(this);">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Image</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" id="productImg" name="product_img"
+                                                        onchange="showUpdatePreview(this);">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Preview</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <img id="previewProductUpdateImg" src="" style="width: 100% !important;
+                                                                    height: 100% !important;">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Preview</label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <img id="previewProductUpdateImg" src="" style="width: 100% !important;
-                                                                    height: 100% !important;">
-                                        </div>
-                                    </div>
-                                </div> -->
                                     <button type="button" onclick="validateFormAndSend()"
                                         class="btn btn-primary mr-2">Update
                                     </button>
                                 </form>
                                 {% else %}
-                                <form class="form-sample" method="post" action="/adminSetup/add-new-product/"
-                                    enctype="multipart/form-data" id="product-form">
+                                <form class="form-sample" method="post" enctype="multipart/form-data" id="product-form">
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-6">
@@ -268,26 +267,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Image</label>
-                                            <div class="col-sm-9">
-                                                <input  type="file" id="productImg" name="product_img"
-                                                    onchange="showPreview(this);">
-                                            </div>
+                                    <div class="row previewImagesBeforeUpload">
+                                        <div class="col-3">
+                                            <img id="previewProductUpdateImg1" src="" style="height: 130px !important;">
+                                            <input type="file" id="productImg" name="product_img1"
+                                                onchange="showImg1(this);">
+                                        </div>
+                                        <div class="col-3">
+                                            <img id="previewProductUpdateImg2" src="" style="height: 130px !important;">
+                                            <input type="file" id="productImg" name="product_img2"
+                                                onchange="showImg2(this);">
+                                        </div>
+                                        <div class="col-3">
+                                            <img id="previewProductUpdateImg3" src="" style="height: 130px !important;">
+                                            <input type="file" id="productImg" name="product_img3"
+                                                onchange="showImg3(this);">
+                                        </div>
+                                        <div class="col-3">
+                                            <img id="previewProductUpdateImg4" src="" style="height: 130px !important;">
+                                            <input type="file" id="productImg" name="product_img4"
+                                                onchange="showImg4(this);">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Preview</label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <img id="previewProductImg" src="" style="width: 100% !important;
-                                                                    height: 100% !important;">
-                                        </div>
-                                    </div>
-                                </div> -->
                                     <button type="button" onclick="validateFormAndSend()"
                                         class="btn btn-primary mr-2">Add
                                     </button>
@@ -305,48 +306,67 @@
 </html>
 <script>
     $(document).ready(function () {
-        $('#previewProductImg').hide();
+        // $('#previewProductImg').hide();
     })
     function calculateFinalPrice() {
         let discountPrice = $("#initialPrice").val() - (($("#discountPrice").val() / 100) * $("#initialPrice").val());
         $("#finalPrice").val(discountPrice)
     }
-    function showPreview(input) {
+    // function showPreview(input) {
+    //     if (input.files && input.files[0]) {
+    //         var src = URL.createObjectURL(input.files[0])
+    //         $('#previewProductImg').attr('src', src)
+    //         $('#previewProductImg').show();
+    //     }
+    // }
+    function showImg1(input) {
         if (input.files && input.files[0]) {
             var src = URL.createObjectURL(input.files[0])
-            $('#previewProductImg').attr('src', src)
-            $('#previewProductImg').show();
+            $('#previewProductUpdateImg1').attr('src', src)
+            $('#previewProductUpdateImg1').show();
         }
     }
-    function showUpdatePreview(input) {
+    function showImg2(input) {
         if (input.files && input.files[0]) {
             var src = URL.createObjectURL(input.files[0])
-            $('#previewProductUpdateImg').attr('src', src)
-            $('#previewProductUpdateImg').show();
+            $('#previewProductUpdateImg2').attr('src', src)
+            $('#previewProductUpdateImg2').show();
+        }
+    }
+    function showImg3(input) {
+        if (input.files && input.files[0]) {
+            var src = URL.createObjectURL(input.files[0])
+            $('#previewProductUpdateImg3').attr('src', src)
+            $('#previewProductUpdateImg3').show();
+        }
+    }
+    function showImg4(input) {
+        if (input.files && input.files[0]) {
+            var src = URL.createObjectURL(input.files[0])
+            $('#previewProductUpdateImg4').attr('src', src)
+            $('#previewProductUpdateImg4').show();
         }
     }
 
     function validateFormAndSend() {
         let flag = 0
-        if (isNaN($('#sub_category_id option:selected').val())) {
-            alert("Please select a category !!");
-            flag = 1
-        }
-        if ($("#finalPrice").val() < 0) {
-            alert("Price cannot be less than zero!");
-            flag = 1
-        }
-        if ($("#name").val() == "" || $("#productQuan").val() == "" || $("#initialPrice").val() == "" || $("#discountPrice").val() == "" ||
-            $("#color").val() == "" || $("#product_desc").val() == "") {
-            alert("All fields are mandatory!");
-            flag = 1
-        }
+        // if (isNaN($('#sub_category_id option:selected').val())) {
+        //     alert("Please select a category !!");
+        //     flag = 1
+        // }
+        // if ($("#finalPrice").val() < 0) {
+        //     alert("Price cannot be less than zero!");
+        //     flag = 1
+        // }
+        // if ($("#name").val() == "" || $("#productQuan").val() == "" || $("#initialPrice").val() == "" || $("#discountPrice").val() == "" ||
+        //     $("#color").val() == "" || $("#product_desc").val() == "") {
+        //     alert("All fields are mandatory!");
+        //     flag = 1
+        // }
         if (flag == 0) {
             $("#product-form").submit()
         }
     }
-
-
 
 
 

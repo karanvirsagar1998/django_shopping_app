@@ -232,15 +232,26 @@ def add_new_product(request):
         product = Product()
         product.name = request.POST.get('name')
         product.quantity = int(request.POST.get('quantity'))
-        product.sub_category_id = request.POST.get('sub_category')
+        # product.sub_category_id = request.POST.get('sub_category')
         product.initial_price = request.POST.get('initial_price')
         product.discount = request.POST.get('discount')
         product.final_price = request.POST.get('final_price')
         product.color = request.POST.get('color')
         product.description = request.POST.get('description')
-        if len(request.FILES) > 0:
-            product.image = request.FILES['product_img']
         product.save()
+        if len(request.FILES) > 0:
+            productImage = ProductImages()
+            productImage.product_id = product.id
+            if request.FILES['product_img1']:
+                productImage.image1 = request.FILES['product_img1']
+            if request.FILES['product_img2']:
+                productImage.image2 = request.FILES['product_img2']
+            if request.FILES['product_img3']:
+                productImage.image3 = request.FILES['product_img3']
+            if request.FILES['product_img4']:
+                productImage.image4 = request.FILES['product_img4']
+            productImage.save()
+        
         messages.success(request, 'Product added successfully')
         return redirect('/adminSetup/view-all-products')
     return render(request, 'add-new-product.html', {'subcategories': subcategories})
@@ -260,8 +271,6 @@ def edit_product(request, id):
         product.final_price = request.POST.get('final_price')
         product.color = request.POST.get('color')
         product.description = request.POST.get('description')
-        if len(request.FILES) > 0:
-            product.image = request.FILES['product_img']
         product.save()
         messages.success(request, 'Product added successfully')
         return redirect('/adminSetup/view-all-products')
